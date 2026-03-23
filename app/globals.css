@@ -5,7 +5,7 @@
  *
  * Derived from the Seed style guide. Achromatic working palette,
  * type-driven hierarchy, semantic color only for status.
- * Matches the visual language of Helm and Research Alignment.
+ * International Typographic Style: confident type, generous space, zero decoration.
  */
 
 @theme {
@@ -49,12 +49,20 @@ body {
   font-family: var(--font-sans);
   color: var(--color-black);
   background: var(--color-white);
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
 /* --- Typographic system --- */
 
-/* Labels and metadata: small, bold, uppercase, wide-tracked */
+/* Display: confident, tight-tracked */
+.display {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+}
+
+/* Labels and metadata: small, semibold, uppercase, wide-tracked */
 .label {
   font-size: 0.6875rem;
   font-weight: 600;
@@ -90,4 +98,12 @@ body {
 ::selection {
   background: var(--color-gray-200);
   color: var(--color-black);
+}
+
+/* --- Transitions: confirmation, not performance --- */
+
+.transition-subtle {
+  transition-property: color, border-color, opacity;
+  transition-duration: 150ms;
+  transition-timing-function: ease;
 }
