@@ -1,0 +1,693 @@
+{
+  "metadata": {
+    "title": "Triton AI Knowledge Map — Self-Help & Self-Service Resources",
+    "description": "Structured knowledge base for RAG supporting the AI intake redesign project at UC San Diego. Covers all self-help, self-service, training, and tool resources available through Triton AI and the broader UCSD AI ecosystem.",
+    "source_url": "https://tritonai.ucsd.edu/",
+    "created": "2026-03-19",
+    "created_by": "Zach Johnson, Director of AI Strategy, UC San Diego",
+    "purpose": "AI intake redesign — RAG knowledge base",
+    "version": "1.0"
+  },
+
+  "site_structure": {
+    "primary_hub": {
+      "name": "Triton AI",
+      "url": "https://tritonai.ucsd.edu/",
+      "description": "Comprehensive online hub for the UC San Diego campus community to discover, access, and learn about all available AI services and resources.",
+      "audience": ["faculty", "staff", "students"],
+      "scope": "UC San Diego Campus and Health Sciences"
+    },
+    "key_pages": [
+      {
+        "title": "Triton AI Home",
+        "url": "https://tritonai.ucsd.edu/",
+        "content_type": "landing_page"
+      },
+      {
+        "title": "TritonGPT: AI Powered Support",
+        "url": "https://tritonai.ucsd.edu/tritongpt/index.html",
+        "content_type": "product_overview"
+      },
+      {
+        "title": "TritonGPT Chatbot Widget",
+        "url": "https://tritonai.ucsd.edu/tritongpt/chatbot-widget.html",
+        "content_type": "product_overview"
+      },
+      {
+        "title": "TritonGPT Large Language Models (LLMs)",
+        "url": "https://tritonai.ucsd.edu/tritongpt/release-notes/models.html",
+        "content_type": "reference"
+      },
+      {
+        "title": "TritonGPT Guides",
+        "url": "https://tritonai.ucsd.edu/training-resources/tritongpt/index.html",
+        "content_type": "training"
+      },
+      {
+        "title": "AI Webinars",
+        "url": "https://tritonai.ucsd.edu/training-resources/webinars.html",
+        "content_type": "training"
+      }
+    ],
+    "related_ucsd_sites": [
+      {
+        "title": "UC San Diego's Support of AI Services (Blink)",
+        "url": "https://blink.ucsd.edu/technology/ai/",
+        "content_type": "institutional_overview"
+      },
+      {
+        "title": "TritonGPT on Blink",
+        "url": "https://blink.ucsd.edu/technology/ai/tritongpt/index.html",
+        "content_type": "product_overview"
+      },
+      {
+        "title": "TritonGPT Assistants (Blink)",
+        "url": "https://blink.ucsd.edu/technology/ai/tritongpt/assistants.html",
+        "content_type": "reference"
+      },
+      {
+        "title": "TritonGPT Guides (Blink)",
+        "url": "https://blink.ucsd.edu/technology/ai/tritongpt/training.html",
+        "content_type": "training"
+      },
+      {
+        "title": "Instructional AI Pilot",
+        "url": "https://blink.ucsd.edu/technology/ai/tritongpt/instruction.html",
+        "content_type": "program"
+      },
+      {
+        "title": "AI Development Workgroup",
+        "url": "https://blink.ucsd.edu/technology/ai/tritongpt/workgroup.html",
+        "content_type": "governance"
+      },
+      {
+        "title": "Using Commercial GenAI Tools in Administration",
+        "url": "https://blink.ucsd.edu/technology/ai/acceptable-use.html",
+        "content_type": "policy"
+      },
+      {
+        "title": "TritonGPT Privacy Statement",
+        "url": "https://blink.ucsd.edu/technology/ai/tritongpt/privacy.html",
+        "content_type": "policy"
+      },
+      {
+        "title": "TritonGPT Release Notes",
+        "url": "https://blink.ucsd.edu/technology/ai/tritongpt/release-notes/index.html",
+        "content_type": "changelog"
+      },
+      {
+        "title": "Guidelines for Uses of AI Assistants (Privacy Office)",
+        "url": "https://privacy.ucsd.edu/ai-guidelines/index.html",
+        "content_type": "policy"
+      },
+      {
+        "title": "TritonGPT for Students",
+        "url": "https://students.ucsd.edu/campus-services/technology/tritongpt/index.html",
+        "content_type": "product_overview"
+      },
+      {
+        "title": "Common Solutions Collaborative — TritonGPT",
+        "url": "https://csc.ucsd.edu/tritongpt/",
+        "content_type": "product_overview"
+      },
+      {
+        "title": "Artificial Intelligence in Education (Academic Integrity)",
+        "url": "https://academicintegrity.ucsd.edu/choose-integrity/gen-ai/index.html",
+        "content_type": "policy"
+      },
+      {
+        "title": "AI Guidelines for Campus Communicators",
+        "url": "https://univcomms.ucsd.edu/resources/ai-guidance/index.html",
+        "content_type": "guidelines"
+      }
+    ]
+  },
+
+  "tools": [
+    {
+      "id": "tritongpt",
+      "name": "TritonGPT",
+      "category": "generative_ai_platform",
+      "url": "https://tritongpt.ucsd.edu/auth/login",
+      "info_url": "https://tritonai.ucsd.edu/tritongpt/index.html",
+      "description": "UC San Diego's secure, on-premise generative AI platform hosted at the San Diego Supercomputer Center. Provides AI-powered support for campus policies, content generation, document summarization, and more.",
+      "hosting": "On-premise at San Diego Supercomputer Center with additional cloud model options",
+      "cost": "Free for eligible campus users",
+      "eligibility": ["faculty", "staff", "students"],
+      "scope": "UC San Diego Campus and Health Sciences",
+      "access_method": "SSO login at tritongpt.ucsd.edu; eligible users receive an email with login link",
+      "support_contact": "servicedesk@ucsd.edu",
+      "data_security": "University maintains full control over data; local models keep data on the UC San Diego network; cloud models are clearly labeled",
+      "capabilities": [
+        "Ask UC San Diego-related questions about campus policies, procedures, and services",
+        "AI-assisted writing: presentation outlines, emails, draft communications, summaries",
+        "Document summarization: paste policies, forms, or long text",
+        "Content editing: refine drafts, improve tone and grammar",
+        "Meeting note structuring (Expert Notetaker assistant)",
+        "Financial guidance (Fund Manager Coach assistant)",
+        "Job description drafting (Job Description Helper assistant)",
+        "Internet search integration"
+      ],
+      "available_models": [
+        {
+          "name": "GPT-5.1",
+          "type": "cloud",
+          "notes": "Latest generation cloud-based AI reasoning"
+        },
+        {
+          "name": "Gemini 3 Pro",
+          "type": "cloud",
+          "notes": "Latest generation cloud-based AI reasoning"
+        },
+        {
+          "name": "GPT OSS",
+          "type": "local",
+          "notes": "On-premises; data never leaves UC San Diego network"
+        },
+        {
+          "name": "Llama 4 Scout",
+          "type": "local",
+          "notes": "On-premises; data never leaves UC San Diego network"
+        }
+      ],
+      "assistants": [
+        {
+          "name": "UC San Diego Assistant",
+          "purpose": "Provides information about UCSD policies, procedures, and campus life",
+          "data_sources": "UCSD Blink pages and other internal documentation",
+          "features": ["Provides links to source documents", "Grounded in institutional knowledge"],
+          "use_cases": ["Policy lookup", "Procedure guidance", "Campus information"]
+        },
+        {
+          "name": "General AI Assistant",
+          "purpose": "Supports writing, editing, and content generation without UCSD-specific context",
+          "data_sources": "General LLM knowledge (no UCSD-specific grounding)",
+          "features": ["No source document links", "Focused on content creation"],
+          "use_cases": ["Drafting emails", "Editing content", "Brainstorming", "Summarizing text"]
+        },
+        {
+          "name": "Internet Search",
+          "purpose": "Provides information retrieval from the web",
+          "data_sources": "Web search results",
+          "features": ["Real-time information retrieval"],
+          "use_cases": ["Current events", "External research", "Fact-checking"]
+        },
+        {
+          "name": "Fund Manager Coach",
+          "purpose": "Guidance on budgeting, grants, financial transactions, payroll, and compliance",
+          "data_sources": "Finance and Research Knowledge Base Articles from Services & Support, Blink pages on finance, research, procurement, travel & expense",
+          "features": ["Domain-specific financial knowledge", "UC San Diego policy grounding"],
+          "use_cases": ["Budget questions", "Grant guidelines", "Financial transactions", "Payroll inquiries", "Compliance questions", "Procurement", "Travel & expense"]
+        },
+        {
+          "name": "Job Description Helper",
+          "purpose": "Assists with writing Position Overviews for Career Tracks library jobs",
+          "data_sources": "Career Tracks position data",
+          "features": ["Structured job description output"],
+          "use_cases": ["Writing position overviews", "Job description drafting"]
+        },
+        {
+          "name": "Expert Notetaker",
+          "purpose": "Converts raw meeting inputs into clear, structured documentation",
+          "data_sources": "User-provided meeting transcripts or notes",
+          "features": ["Accepts Zoom/Teams transcripts or rough notes", "Focuses on decisions and actionability"],
+          "use_cases": ["Meeting minutes", "Action item extraction", "Decision documentation"]
+        }
+      ],
+      "self_service_paths": [
+        {
+          "action": "Get access",
+          "steps": ["Eligible users receive email with login link", "Do not attempt access until confirmation email arrives", "Login at tritongpt.ucsd.edu with SSO"]
+        },
+        {
+          "action": "Learn the interface",
+          "steps": ["Review TritonGPT Interface Guide", "Familiarize with available assistants", "Choose the right assistant for your task"]
+        },
+        {
+          "action": "Get help",
+          "steps": ["Email servicedesk@ucsd.edu", "Subscribe to TritonAI mailing list for updates"]
+        }
+      ]
+    },
+    {
+      "id": "tritongpt_chatbot_widget",
+      "name": "TritonGPT Chatbot Widget",
+      "category": "embedded_ai_support",
+      "url": "https://tritonai.ucsd.edu/tritongpt/chatbot-widget.html",
+      "description": "Embeddable AI-powered chatbot widget for UC San Diego department websites. Provides natural-language support and information retrieval directly on webpages without requiring user authentication.",
+      "hosting": "UC San Diego infrastructure",
+      "cost": "Free (potential cost savings vs. third-party chatbot services)",
+      "eligibility": ["departments", "units", "programs"],
+      "capabilities": [
+        "Lightweight embed on any UC San Diego CMS website",
+        "Natural language understanding grounded in institutional knowledge",
+        "Multi-language support",
+        "No authentication required for end users",
+        "Draws from curated knowledge base of 60+ UC San Diego websites"
+      ],
+      "ideal_for": ["Admissions", "Student services", "HR", "Research centers", "Outward-facing department sites"],
+      "self_service_paths": [
+        {
+          "action": "Explore the widget for your department",
+          "steps": ["Visit chatbot-widget page on tritonai.ucsd.edu", "Reach out to explore whether it can replace third-party chatbot services"]
+        }
+      ]
+    },
+    {
+      "id": "copilot_data_protection",
+      "name": "Copilot with Data Protection",
+      "category": "commercial_ai_chatbot",
+      "url": "https://blink.ucsd.edu/technology/ai/",
+      "description": "Microsoft Copilot chatbot with data protection features. Provides image generation, PDF summarization, content generation, and fact retrieval.",
+      "cost": "Available (see Blink for details)",
+      "eligibility": ["faculty", "staff", "students"],
+      "capabilities": [
+        "Image generation",
+        "PDF summarization",
+        "Content generation",
+        "Fact retrieval"
+      ]
+    },
+    {
+      "id": "copilot_m365",
+      "name": "Copilot for Microsoft 365",
+      "category": "productivity_ai",
+      "url": "https://blink.ucsd.edu/technology/computers/software-acms/available-software/microsoft-individual.html",
+      "description": "AI-powered productivity tool integrated with Word, Excel, PowerPoint, Outlook, Teams, and other Microsoft 365 apps. Assists with drafting documents, summarizing emails, creating presentations, analyzing data, and generating insights.",
+      "cost": "Recharge (department purchase required); currently in soft launch",
+      "eligibility": ["Departments enrolled in UC San Diego Campus and School Agreement (CASA)"],
+      "capabilities": [
+        "Draft documents in Word",
+        "Summarize emails in Outlook",
+        "Create presentations in PowerPoint",
+        "Analyze data in Excel",
+        "Generate insights across M365 apps"
+      ],
+      "self_service_paths": [
+        {
+          "action": "Purchase access",
+          "steps": ["Confirm department enrollment in CASA", "Purchase through software procurement"]
+        }
+      ]
+    },
+    {
+      "id": "zoom_ai_companion",
+      "name": "Zoom AI Companion",
+      "category": "meeting_ai",
+      "url": "https://blink.ucsd.edu/technology/file-sharing/zoom/zoom-ai-companion.html",
+      "description": "AI features within UC San Diego's Zoom instance. Disabled by default; users opt in through their individual Zoom account settings.",
+      "cost": "Free (included with UC San Diego Zoom)",
+      "eligibility": ["faculty", "staff", "students"],
+      "capabilities": [
+        "Meeting transcription",
+        "Meeting summarization",
+        "Q&A assistance",
+        "Additional AI companion features"
+      ],
+      "self_service_paths": [
+        {
+          "action": "Enable Zoom AI Companion",
+          "steps": ["Log into your UC San Diego Zoom account", "Navigate to Settings", "Enable AI Companion features"]
+        }
+      ],
+      "default_state": "Disabled — user must opt in"
+    },
+    {
+      "id": "google_gemini",
+      "name": "Google Gemini",
+      "category": "commercial_ai_chatbot",
+      "url": "https://blink.ucsd.edu/technology/file-sharing/google/gemini-notebooklm.html",
+      "description": "Google's multimodal AI model powering Google's AI chatbot. Available to all UC San Diego campus users.",
+      "cost": "Free for campus users",
+      "eligibility": ["faculty", "staff", "students"],
+      "scope": "UC San Diego campus (Health Sciences staff can request access via exception process)",
+      "capabilities": [
+        "Multimodal AI interactions",
+        "Content generation",
+        "Research assistance"
+      ]
+    },
+    {
+      "id": "notebooklm",
+      "name": "NotebookLM",
+      "category": "research_ai",
+      "url": "https://blink.ucsd.edu/technology/file-sharing/google/gemini-notebooklm.html",
+      "description": "Google's AI-powered research and note-taking tool for document interaction. Leverages Gemini to summarize content, answer questions with citations, generate ideas, and create audio overviews.",
+      "cost": "Free for campus users",
+      "eligibility": ["faculty", "staff", "students"],
+      "scope": "UC San Diego campus (Health Sciences staff can request access via exception process)",
+      "capabilities": [
+        "Document summarization with citations",
+        "Question answering grounded in uploaded documents",
+        "Idea generation",
+        "Audio overview creation"
+      ]
+    },
+    {
+      "id": "github_copilot",
+      "name": "GitHub Copilot",
+      "category": "developer_ai",
+      "url": "https://blink.ucsd.edu/technology/about/news/posts/2024-08-01-github-copilot.html",
+      "description": "AI-powered coding assistant for developers. Reported to boost developer productivity at UC San Diego.",
+      "eligibility": ["developers", "IT staff"],
+      "capabilities": [
+        "Code completion",
+        "Code generation",
+        "Developer productivity"
+      ]
+    }
+  ],
+
+  "training_and_learning": [
+    {
+      "id": "ai_foundations_self_paced",
+      "name": "AI Foundations (Self-Paced)",
+      "type": "self_paced_course",
+      "platform": "UCLC (UC Learning Center)",
+      "description": "Foundational introduction to AI terminology and history. Recommended starting point for users beginning their AI journey.",
+      "audience": ["all_campus_users"],
+      "prerequisites": "None",
+      "url_context": "Available through UCLC; referenced on tritonai.ucsd.edu training pages",
+      "topics": ["AI terminology", "History of AI", "Foundational concepts"]
+    },
+    {
+      "id": "tritongpt_interface_guide",
+      "name": "TritonGPT Interface Guide",
+      "type": "self_service_guide",
+      "url": "https://tritonai.ucsd.edu/training-resources/tritongpt/index.html",
+      "description": "Step-by-step guide for first-time TritonGPT users to understand the platform interface and familiarize themselves with available assistants.",
+      "audience": ["first_time_tritongpt_users"],
+      "topics": ["Platform navigation", "Assistant selection", "Getting started"]
+    },
+    {
+      "id": "prompting_best_practices",
+      "name": "Prompting Best Practices Guide",
+      "type": "self_service_guide",
+      "url": "https://tritonai.ucsd.edu/tritongpt/index.html",
+      "also_at": "https://blink.ucsd.edu/technology/ai/tritongpt/index.html",
+      "description": "Guide on crafting effective prompts for TritonGPT and other AI tools.",
+      "audience": ["all_tritongpt_users"],
+      "key_principles": [
+        "Be specific — more detail yields better responses",
+        "Explore use cases — brainstorming, summarizing, drafting",
+        "Verify sources — review links provided in responses",
+        "Provide feedback — use thumbs-up/down and comments"
+      ]
+    },
+    {
+      "id": "ai_webinars",
+      "name": "AI Webinars & Workshops",
+      "type": "live_training",
+      "url": "https://tritonai.ucsd.edu/training-resources/webinars.html",
+      "description": "Hands-on prompt writing workshops available both online and in person. Focus on getting the best outputs from AI tools, with skills applicable to TritonGPT, Gemini, Copilot, ChatGPT, and others.",
+      "audience": ["all_campus_users"],
+      "format": ["online", "in_person"],
+      "registration": "Via UCLC",
+      "example_sessions": [
+        {
+          "date": "2026-03-24",
+          "time": "11:00 AM - 12:00 PM and 1:00 PM - 2:00 PM",
+          "location": "Green Table Room, Price Center West"
+        }
+      ],
+      "topics": ["Prompt writing", "AI tool usage", "Cross-tool skills"]
+    },
+    {
+      "id": "tritongpt_unlocking_power",
+      "name": "TritonGPT: Unlocking the Power of AI (Webinar Slides)",
+      "type": "presentation",
+      "url": "https://osi.ucsd.edu/_files/AI%20-%20TGPT%20WEBINAR%201.pdf",
+      "description": "PDF presentation from an introductory TritonGPT webinar covering platform overview and capabilities.",
+      "format": "PDF"
+    }
+  ],
+
+  "programs": [
+    {
+      "id": "instructional_ai_pilot",
+      "name": "Instructional AI Pilot",
+      "type": "pilot_program",
+      "url": "https://blink.ucsd.edu/technology/ai/tritongpt/instruction.html",
+      "description": "Pilot program exploring how secure, generative AI can enhance teaching and learning. Powered by TritonGPT, it provides custom AI assistants for participating instructors.",
+      "audience": ["faculty", "instructors", "TAs"],
+      "how_it_works": "Grounds AI knowledge in course materials (lecture slides, study guides, readings, transcripts). Instructors manage content via secure Google Drive integration.",
+      "assistant_types": [
+        {
+          "name": "Instructor-facing assistant",
+          "audience": "Instructors and designated collaborators (TAs/IAs)",
+          "purpose": "Streamline course work"
+        },
+        {
+          "name": "Student-facing assistant",
+          "audience": "Students",
+          "purpose": "Socratic engagement — guides students through dialogue rather than providing direct answers"
+        }
+      ],
+      "content_management": "Instructors create a Google Drive folder named with their course ID; subfolders auto-created for each assistant type",
+      "timeline": {
+        "july": "Instructor onboarding and initial setup",
+        "july_sept": "Course content upload and assistant configuration",
+        "aug_dec": "Both assistants live for Fall quarter"
+      }
+    }
+  ],
+
+  "policies_and_governance": [
+    {
+      "id": "acceptable_use_commercial_genai",
+      "name": "Using Commercial GenAI Tools in Administration",
+      "url": "https://blink.ucsd.edu/technology/ai/acceptable-use.html",
+      "description": "Guidelines for how campus administrators should evaluate and use commercial generative AI tools.",
+      "key_points": [
+        "Adhere to all laws, regulations, UC policies, and UC Principles of Community",
+        "Follow security standards and vendor terms of use",
+        "Never share PII, FERPA-protected student records, or P3/P4 classified data without proper contractual safeguards"
+      ]
+    },
+    {
+      "id": "ai_assistant_guidelines_privacy",
+      "name": "Guidelines for Uses of AI Assistants (Privacy Office)",
+      "url": "https://privacy.ucsd.edu/ai-guidelines/index.html",
+      "description": "Privacy-focused guidelines from the UC San Diego Privacy Office on responsible AI assistant use.",
+      "topics": ["Data privacy", "PII protection", "FERPA compliance"]
+    },
+    {
+      "id": "tritongpt_privacy_statement",
+      "name": "TritonGPT Privacy Statement",
+      "url": "https://blink.ucsd.edu/technology/ai/tritongpt/privacy.html",
+      "description": "Privacy statement specific to the TritonGPT platform."
+    },
+    {
+      "id": "data_classification_guidance",
+      "name": "Data Classification and AI Use",
+      "source": "Synthesized from multiple UCSD policy pages",
+      "key_rules": [
+        "Never share PII with AI services without proper safeguards",
+        "Never share FERPA-protected student records",
+        "Never share P3 or P4 classified data without contractual protections",
+        "Consult UCOP website for data classification guidance if uncertain",
+        "Local TritonGPT models keep data on the UC San Diego network",
+        "Cloud models are clearly labeled in the TritonGPT interface"
+      ]
+    },
+    {
+      "id": "academic_integrity_ai",
+      "name": "Artificial Intelligence in Education — Academic Integrity",
+      "url": "https://academicintegrity.ucsd.edu/choose-integrity/gen-ai/index.html",
+      "description": "Academic integrity guidance on the use of generative AI in educational contexts."
+    },
+    {
+      "id": "campus_communicators_ai",
+      "name": "AI Guidelines for Campus Communicators",
+      "url": "https://univcomms.ucsd.edu/resources/ai-guidance/index.html",
+      "description": "Guidelines for campus communications professionals using AI tools."
+    },
+    {
+      "id": "ai_development_workgroup",
+      "name": "AI Development Workgroup",
+      "url": "https://blink.ucsd.edu/technology/ai/tritongpt/workgroup.html",
+      "description": "Governance body for AI tool development at UC San Diego.",
+      "role": "Guides development and evolution of campus AI services"
+    },
+    {
+      "id": "uc_responsible_ai_principles",
+      "name": "UC Responsible AI Principles",
+      "url": "https://today.ucsd.edu/story/uc-adopts-recommendations-for-the-responsible-use-of-artificial-intelligence",
+      "description": "University of California system-wide recommendations for responsible AI use, adopted across all UC campuses.",
+      "principles": [
+        "Appropriateness",
+        "Transparency",
+        "Accuracy, Reliability, and Safety",
+        "Fairness and Non-Discrimination",
+        "Privacy and Security",
+        "Human Values",
+        "Shared Benefit and Prosperity",
+        "Accountability"
+      ]
+    }
+  ],
+
+  "support_channels": [
+    {
+      "channel": "IT Service Desk",
+      "contact": "servicedesk@ucsd.edu",
+      "for": "TritonGPT access issues, general AI tool support"
+    },
+    {
+      "channel": "TritonAI Mailing List",
+      "description": "Subscribe for latest announcements and news about AI services",
+      "for": "Updates, new features, training announcements"
+    },
+    {
+      "channel": "TritonGPT In-App Feedback",
+      "description": "Thumbs-up/thumbs-down plus comment fields within TritonGPT",
+      "for": "Response quality feedback, assistant improvement"
+    }
+  ],
+
+  "self_service_journeys": {
+    "description": "Common user paths through the self-service ecosystem, organized by persona and intent. Designed for intake routing and deflection.",
+    "journeys": [
+      {
+        "id": "journey_new_user",
+        "persona": "New campus user wanting to try AI",
+        "intent": "Get started with AI tools",
+        "steps": [
+          {"step": 1, "action": "Visit tritonai.ucsd.edu to discover available tools"},
+          {"step": 2, "action": "Complete AI Foundations self-paced course in UCLC"},
+          {"step": 3, "action": "Wait for TritonGPT access confirmation email"},
+          {"step": 4, "action": "Review TritonGPT Interface Guide"},
+          {"step": 5, "action": "Log in at tritongpt.ucsd.edu and explore assistants"},
+          {"step": 6, "action": "Review Prompting Best Practices guide"}
+        ],
+        "resources": ["tritonai.ucsd.edu", "UCLC AI Foundations", "TritonGPT Interface Guide", "Prompting Best Practices"]
+      },
+      {
+        "id": "journey_policy_lookup",
+        "persona": "Staff member needing campus policy info",
+        "intent": "Find answers about UC San Diego policies or procedures",
+        "steps": [
+          {"step": 1, "action": "Open TritonGPT at tritongpt.ucsd.edu"},
+          {"step": 2, "action": "Select the UC San Diego Assistant"},
+          {"step": 3, "action": "Ask your policy or procedure question"},
+          {"step": 4, "action": "Review source links provided in the response"},
+          {"step": 5, "action": "Provide feedback via thumbs-up/down"}
+        ],
+        "resources": ["TritonGPT — UC San Diego Assistant"]
+      },
+      {
+        "id": "journey_content_creation",
+        "persona": "Staff or faculty needing to draft content",
+        "intent": "Generate or refine written content (emails, presentations, summaries)",
+        "steps": [
+          {"step": 1, "action": "Open TritonGPT"},
+          {"step": 2, "action": "Select the General AI Assistant"},
+          {"step": 3, "action": "Provide a detailed, specific prompt"},
+          {"step": 4, "action": "Iterate on the output"},
+          {"step": 5, "action": "Review Prompting Best Practices if needed"}
+        ],
+        "resources": ["TritonGPT — General AI Assistant", "Prompting Best Practices"]
+      },
+      {
+        "id": "journey_finance_questions",
+        "persona": "Fund manager or financial staff",
+        "intent": "Get guidance on budgets, grants, financial transactions, compliance",
+        "steps": [
+          {"step": 1, "action": "Open TritonGPT"},
+          {"step": 2, "action": "Select the Fund Manager Coach assistant"},
+          {"step": 3, "action": "Ask your finance, procurement, or compliance question"},
+          {"step": 4, "action": "Review source documentation referenced in the response"}
+        ],
+        "resources": ["TritonGPT — Fund Manager Coach"]
+      },
+      {
+        "id": "journey_meeting_notes",
+        "persona": "Anyone who needs to document a meeting",
+        "intent": "Turn meeting transcripts into structured notes",
+        "steps": [
+          {"step": 1, "action": "Get transcript from Zoom AI Companion or Teams"},
+          {"step": 2, "action": "Open TritonGPT and select Expert Notetaker"},
+          {"step": 3, "action": "Paste or upload the transcript"},
+          {"step": 4, "action": "Receive structured notes focused on decisions and action items"}
+        ],
+        "resources": ["Zoom AI Companion", "TritonGPT — Expert Notetaker"]
+      },
+      {
+        "id": "journey_department_chatbot",
+        "persona": "Department administrator or web manager",
+        "intent": "Add AI-powered support to a department website",
+        "steps": [
+          {"step": 1, "action": "Review TritonGPT Chatbot Widget info page"},
+          {"step": 2, "action": "Evaluate whether the widget can replace existing third-party chatbot"},
+          {"step": 3, "action": "Contact the TritonGPT team to explore implementation"},
+          {"step": 4, "action": "Embed widget on UC San Diego CMS website"}
+        ],
+        "resources": ["TritonGPT Chatbot Widget"]
+      },
+      {
+        "id": "journey_instructor_ai",
+        "persona": "Faculty member wanting AI in their course",
+        "intent": "Set up course-specific AI assistants for teaching",
+        "steps": [
+          {"step": 1, "action": "Review Instructional AI Pilot information"},
+          {"step": 2, "action": "Apply to participate in the pilot program"},
+          {"step": 3, "action": "Create Google Drive folder with course ID"},
+          {"step": 4, "action": "Upload course materials to appropriate subfolders"},
+          {"step": 5, "action": "Configure instructor-facing and student-facing assistants"},
+          {"step": 6, "action": "Deploy assistants for the quarter"}
+        ],
+        "resources": ["Instructional AI Pilot", "TritonGPT"]
+      },
+      {
+        "id": "journey_data_sensitivity",
+        "persona": "Any user unsure about what data to share with AI",
+        "intent": "Understand data classification rules for AI tools",
+        "steps": [
+          {"step": 1, "action": "Review acceptable use policy on Blink"},
+          {"step": 2, "action": "Check data classification (P1-P4) for your data"},
+          {"step": 3, "action": "If P3/P4, use only local TritonGPT models (data stays on campus)"},
+          {"step": 4, "action": "If uncertain, consult UCOP data classification guidance or contact Privacy Office"}
+        ],
+        "resources": ["Using Commercial GenAI Tools in Administration", "TritonGPT Privacy Statement", "Guidelines for Uses of AI Assistants"]
+      },
+      {
+        "id": "journey_skill_building",
+        "persona": "Campus user wanting to improve AI skills",
+        "intent": "Attend training and build prompting skills",
+        "steps": [
+          {"step": 1, "action": "Complete AI Foundations self-paced course in UCLC"},
+          {"step": 2, "action": "Review Prompting Best Practices guide"},
+          {"step": 3, "action": "Register for upcoming AI webinar/workshop via UCLC"},
+          {"step": 4, "action": "Attend live session (online or in-person)"},
+          {"step": 5, "action": "Practice with TritonGPT using techniques learned"},
+          {"step": 6, "action": "Subscribe to TritonAI mailing list for ongoing updates"}
+        ],
+        "resources": ["UCLC AI Foundations", "Prompting Best Practices", "AI Webinars"]
+      }
+    ]
+  },
+
+  "rag_tags": {
+    "description": "Flat list of tags for chunk-level metadata to improve retrieval quality",
+    "tags": [
+      "tritongpt", "tritonai", "ucsd", "uc-san-diego",
+      "self-service", "self-help", "getting-started", "how-to",
+      "ai-tools", "generative-ai", "llm", "chatbot",
+      "training", "webinar", "workshop", "self-paced", "uclc",
+      "prompting", "best-practices", "prompt-engineering",
+      "assistants", "uc-san-diego-assistant", "general-assistant",
+      "fund-manager-coach", "expert-notetaker", "job-description-helper",
+      "internet-search", "instructional-ai-pilot",
+      "chatbot-widget", "department-support", "embed",
+      "copilot", "microsoft-365", "zoom-ai-companion", "gemini", "notebooklm", "github-copilot",
+      "data-security", "privacy", "ferpa", "pii", "data-classification",
+      "acceptable-use", "responsible-ai", "governance", "academic-integrity",
+      "sdsc", "san-diego-supercomputer-center", "on-premise", "cloud",
+      "faculty", "staff", "students", "departments",
+      "access", "eligibility", "cost", "free", "recharge",
+      "meeting-notes", "transcription", "summarization",
+      "content-generation", "writing", "editing", "email-drafting",
+      "policy-lookup", "campus-services", "intake", "support"
+    ]
+  }
+}
