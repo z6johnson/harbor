@@ -29,7 +29,6 @@ export default function Home() {
     scrollToBottom();
   }, [messages, scrollToBottom]);
 
-  // Auto-resize textarea
   useEffect(() => {
     const el = textareaRef.current;
     if (el) {
@@ -117,30 +116,29 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Header */}
-      <header className="border-b border-gray-200 px-6 py-4 flex items-baseline justify-between shrink-0">
-        <div className="flex items-baseline gap-3">
-          <h1 className="text-lg font-bold tracking-tight">harbor</h1>
+      <header className="px-8 py-6 flex items-baseline justify-between shrink-0">
+        <div className="flex items-baseline gap-4">
+          <h1 className="text-xl font-bold tracking-tight">harbor</h1>
           <span className="label hidden sm:inline">AI SOLUTION INTAKE</span>
         </div>
         <span className="label">UC SAN DIEGO</span>
       </header>
 
       {/* Main area */}
-      <main className="flex-1 flex flex-col max-w-2xl w-full mx-auto px-6">
+      <main className="flex-1 flex flex-col max-w-2xl w-full mx-auto px-8">
         {!hasMessages ? (
-          /* Empty state — centered prompt area with hints */
-          <div className="flex-1 flex flex-col justify-center pb-24">
-            <div className="mb-10">
-              <p className="text-gray-600 text-[15px] leading-relaxed max-w-md">
-                Describe what you&apos;re working on or a problem you&apos;re
-                facing. We&apos;ll figure out the best path forward together — whether
-                that&apos;s an existing resource, a conversation with the AI strategy
-                team, or something else.
-              </p>
-            </div>
+          /* Empty state */
+          <div className="flex-1 flex flex-col justify-center pb-32">
+            <h2 className="display mb-6">
+              Tell us what<br />you&apos;re working on.
+            </h2>
+            <p className="text-gray-500 text-[15px] leading-relaxed max-w-sm mb-12">
+              Describe a problem or an idea. We&apos;ll find the right path
+              forward together.
+            </p>
 
-            {/* Input area */}
-            <div className="mb-6">
+            {/* Input */}
+            <div className="mb-10">
               <textarea
                 ref={textareaRef}
                 value={input}
@@ -148,29 +146,29 @@ export default function Home() {
                 onKeyDown={handleKeyDown}
                 placeholder="What's on your mind?"
                 rows={1}
-                className="w-full resize-none border border-gray-300 rounded-none px-4 py-3 text-[15px] leading-relaxed placeholder:text-gray-400 focus:outline-none focus:border-black transition-colors"
+                className="w-full resize-none border-b border-gray-300 bg-transparent px-0 py-3 text-[15px] leading-relaxed placeholder:text-gray-400 focus:outline-none focus:border-black transition-subtle"
                 autoFocus
               />
-              <div className="flex justify-end mt-2">
+              <div className="flex justify-end mt-3">
                 <button
                   onClick={() => sendMessage(input)}
                   disabled={!input.trim() || isLoading}
-                  className="bg-black text-white text-sm font-medium px-5 py-2 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors hover:bg-gray-800"
+                  className="bg-black text-white text-sm font-medium px-5 py-2 disabled:bg-gray-300 disabled:cursor-not-allowed hover:bg-gray-800 transition-subtle"
                 >
                   Send
                 </button>
               </div>
             </div>
 
-            {/* Starter hints */}
+            {/* Starter hints — tertiary actions, text-styled */}
             <div>
-              <p className="label mb-3">NOT SURE WHERE TO START?</p>
-              <div className="flex flex-col gap-2">
+              <p className="label mb-4">Or start with one of these</p>
+              <div className="flex flex-col gap-1">
                 {STARTER_HINTS.map((hint) => (
                   <button
                     key={hint}
                     onClick={() => sendMessage(hint)}
-                    className="text-left text-sm text-gray-600 border border-gray-200 px-4 py-2.5 hover:border-gray-400 hover:text-black transition-colors"
+                    className="text-left text-sm text-gray-500 py-2 hover:text-black transition-subtle"
                   >
                     {hint}
                   </button>
@@ -181,17 +179,24 @@ export default function Home() {
         ) : (
           /* Conversation view */
           <>
-            <div className="flex-1 py-8 space-y-6 overflow-y-auto">
+            <div className="flex-1 py-10 overflow-y-auto">
               {messages.map((msg, i) => (
-                <div key={i}>
-                  <p className="label mb-1.5">
+                <div
+                  key={i}
+                  className={`${i > 0 ? "mt-8" : ""} ${
+                    msg.role === "user"
+                      ? "pb-8 border-b border-gray-100"
+                      : ""
+                  }`}
+                >
+                  <p className="label mb-2">
                     {msg.role === "user" ? "YOU" : "HARBOR"}
                   </p>
                   <div
-                    className={`text-[15px] leading-relaxed whitespace-pre-wrap ${
+                    className={`text-[15px] leading-[1.7] whitespace-pre-wrap ${
                       msg.role === "assistant"
                         ? "text-black"
-                        : "text-gray-700"
+                        : "text-gray-600"
                     }`}
                   >
                     {msg.content}
@@ -199,7 +204,7 @@ export default function Home() {
                       i === messages.length - 1 &&
                       msg.role === "assistant" &&
                       msg.content === "" && (
-                        <span className="inline-block w-1.5 h-4 bg-gray-400 animate-pulse ml-0.5 align-text-bottom" />
+                        <span className="inline-block w-1.5 h-4 bg-gray-400 animate-pulse align-text-bottom" />
                       )}
                   </div>
                 </div>
@@ -207,23 +212,23 @@ export default function Home() {
               <div ref={messagesEndRef} />
             </div>
 
-            {/* Input pinned to bottom during conversation */}
-            <div className="border-t border-gray-200 py-4 shrink-0">
+            {/* Input pinned to bottom */}
+            <div className="border-t border-gray-200 py-5 shrink-0">
               <div className="flex gap-3 items-end">
                 <textarea
                   ref={textareaRef}
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   onKeyDown={handleKeyDown}
-                  placeholder="Continue the conversation..."
+                  placeholder="Continue..."
                   rows={1}
-                  className="flex-1 resize-none border border-gray-300 rounded-none px-4 py-3 text-[15px] leading-relaxed placeholder:text-gray-400 focus:outline-none focus:border-black transition-colors"
+                  className="flex-1 resize-none border-b border-gray-300 bg-transparent px-0 py-3 text-[15px] leading-relaxed placeholder:text-gray-400 focus:outline-none focus:border-black transition-subtle"
                   autoFocus
                 />
                 <button
                   onClick={() => sendMessage(input)}
                   disabled={!input.trim() || isLoading}
-                  className="bg-black text-white text-sm font-medium px-5 py-3 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors hover:bg-gray-800 shrink-0"
+                  className="bg-black text-white text-sm font-medium px-5 py-2.5 disabled:bg-gray-300 disabled:cursor-not-allowed hover:bg-gray-800 transition-subtle shrink-0 mb-0.5"
                 >
                   Send
                 </button>
@@ -234,8 +239,8 @@ export default function Home() {
       </main>
 
       {/* Footer */}
-      <footer className="px-6 py-3 text-center shrink-0">
-        <p className="text-xs text-gray-400">
+      <footer className="px-8 py-4 shrink-0">
+        <p className="label text-center text-gray-400">
           UC San Diego · Office of Strategic Initiatives
         </p>
       </footer>
