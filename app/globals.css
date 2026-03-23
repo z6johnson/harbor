@@ -1,0 +1,93 @@
+@import "tailwindcss";
+
+/*
+ * harbor — design tokens
+ *
+ * Derived from the Seed style guide. Achromatic working palette,
+ * type-driven hierarchy, semantic color only for status.
+ * Matches the visual language of Helm and Research Alignment.
+ */
+
+@theme {
+  /* --- Type scale --- */
+  --font-sans: "Inter", "Helvetica Neue", "Arial", sans-serif;
+  --font-serif: "Georgia", "Times New Roman", serif;
+
+  /* --- Colors: achromatic palette --- */
+  --color-white: #ffffff;
+  --color-gray-50: #fafafa;
+  --color-gray-100: #f5f5f5;
+  --color-gray-200: #e5e5e5;
+  --color-gray-300: #d4d4d4;
+  --color-gray-400: #a3a3a3;
+  --color-gray-500: #737373;
+  --color-gray-600: #525252;
+  --color-gray-700: #404040;
+  --color-gray-800: #262626;
+  --color-gray-900: #171717;
+  --color-black: #0a0a0a;
+
+  /* --- Spacing: 4px base unit --- */
+  --spacing-unit: 4px;
+}
+
+/* --- Base resets --- */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-black);
+  background: var(--color-white);
+  line-height: 1.5;
+}
+
+/* --- Typographic system --- */
+
+/* Labels and metadata: small, bold, uppercase, wide-tracked */
+.label {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-gray-500);
+}
+
+/* --- Scrollbar --- */
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-gray-300);
+  border-radius: 2px;
+}
+
+/* --- Focus states: always visible, high-contrast --- */
+
+:focus-visible {
+  outline: 2px solid var(--color-black);
+  outline-offset: 2px;
+}
+
+/* --- Selection --- */
+
+::selection {
+  background: var(--color-gray-200);
+  color: var(--color-black);
+}
