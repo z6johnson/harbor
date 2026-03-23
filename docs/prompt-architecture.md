@@ -270,27 +270,57 @@ For self-serve log entries:
 
 ## Layer 4 — Knowledge Base
 
-This layer is injected at runtime and contains:
+This layer is injected at runtime and contains three blocks. The knowledge map is the largest; its current v1.0 (~700 lines JSON) fits comfortably in context without retrieval.
 
-1. **TritonAI Resource Map** — The full catalog of tools, assistants, training resources, policies, and guides available through TritonAI. Each entry includes: name, description, what it does, who it's for, and when to recommend it. This is the system's primary reference for routing decisions.
+### Block 1: TritonAI Resource Map
 
-2. **Submitter Context** — Directory data for the authenticated user: name, department, VC area, role. Injected per-session from SSO. The system uses this to avoid asking for information it already has.
+Source: `data/tritonai_knowledge_map.json`
 
-3. **Runtime Configuration** — Follow-up timeframes, feature flags, any dynamic values that change without a prompt revision.
+The map contains structured entries across six categories that the system uses for routing and resource matching:
+
+- **Tools** (TritonGPT, Chatbot Widget, Copilot, Zoom AI Companion, Gemini, NotebookLM, GitHub Copilot) — each with capabilities, eligibility, access methods, and self-service paths
+- **TritonGPT Assistants** (UC San Diego Assistant, General AI, Fund Manager Coach, Expert Notetaker, Job Description Helper, Internet Search) — each with purpose, data sources, and use cases
+- **Training & Learning** (AI Foundations, Interface Guide, Prompting Best Practices, Webinars) — with audience, format, and registration details
+- **Programs** (Instructional AI Pilot) — with eligibility, how-it-works, and timeline
+- **Policies & Governance** (Acceptable Use, Privacy Guidelines, Data Classification, Academic Integrity, AI Development Workgroup) — with key rules and URLs
+- **Self-Service Journeys** (9 paths: new user, policy lookup, content creation, finance, meeting notes, department chatbot, instructor AI, data sensitivity, skill building) — step-by-step paths the system can walk someone through
+
+The system uses these entries to make specific recommendations. When a tool or assistant matches, reference it by name with its URL and enough context to act immediately.
+
+### Block 2: Submitter Context
+
+Injected per-session from SSO directory data.
+
+### Block 3: Runtime Configuration
+
+Follow-up timeframes, feature flags, and any values that change without a prompt revision.
 
 ```
 TRITONAI RESOURCES
 
-[Injected at runtime from the TritonAI knowledge map.]
+[Injected at runtime from data/tritonai_knowledge_map.json — full map
+included when under context threshold; relevant entries retrieved if map
+grows beyond threshold.]
 
 Use these resources to make routing decisions and specific recommendations.
-When a resource is relevant, reference it by name with enough context that
-the person can act on it. Never provide a generic link when a specific
-resource applies.
+When a resource is relevant, reference it by name with its URL and enough
+context that the person can act on it immediately. Never provide a generic
+link when a specific resource applies.
+
+When the person's situation matches a self-service journey, walk them
+through the specific steps. When it matches a tool or assistant, name it,
+explain what it does for their situation, and tell them how to access it.
 
 SUBMITTER CONTEXT
 
 [Injected at runtime from SSO directory data.]
+
+{
+  "name": "...",
+  "department": "...",
+  "vc_area": "...",
+  "role": "..."
+}
 
 You already know this person's name, department, VC area, and role.
 Do not ask for any of this information. Use it to inform your responses
@@ -317,31 +347,92 @@ At runtime, the four layers are concatenated into a single system prompt:
 
 Layers 1–3 are static across sessions. Layer 4 is assembled per-session from the resource map, submitter context, and current configuration values.
 
-The user message is the person's conversational input. The assistant's response is Harbor's reply. The brief is generated as a separate structured output call at conversation close — not embedded in the conversational response.
+The user message is the person's conversational input. The assistant's response is Harbor's reply.
+
+---
+
+## Brief Agent
+
+Brief generation is a separate agent/service, not part of the conversational response. This separation matters for three reasons:
+
+1. **The conversation stays natural.** The conversational agent focuses entirely on the person. It never contorts its language to satisfy a schema.
+2. **The brief is reliable.** The brief agent receives the full conversation transcript and the output schema, and its only job is synthesis. No competing objectives.
+3. **The brief agent serves multiple consumers.** The same structured brief can route to ClickUp today, a different pipeline backend tomorrow, or feed into dashboards, analytics, and governance workflows. The agent is the single point of synthesis — downstream consumers are configuration, not code changes.
+
+### How it works
+
+When the conversational agent closes the conversation (determined by the conversation logic in Layer 2), the server:
+
+1. Assembles the full conversation transcript from the message history (server-side, not model-generated).
+2. Calls the brief agent with: the transcript, the submitter context, and the output schema from Layer 3.
+3. The brief agent returns a structured JSON brief.
+4. The server writes the brief to the configured pipeline backend.
+
+The brief agent uses its own system prompt — a subset of Layer 1 (voice and responsible AI constraints) plus the full Layer 3 (output schema) plus the submitter context. It does not need Layer 2 (conversation logic) or the TritonAI resource map.
+
+### Brief agent system prompt (abbreviated)
+
+```
+You are the Harbor brief agent. You receive a conversation transcript
+between Harbor and a UCSD community member, along with the submitter's
+directory context. Your job is to synthesize the conversation into a
+structured brief.
+
+Synthesize — do not transcribe. The brief should read as a coherent
+document. Write the problem statement from the perspective of the
+situation, not the person's proposed solution.
+
+Derive governance attributes from what was discussed. Be descriptive,
+not evaluative. Capture what was said and what it implies, not a
+risk score.
+
+Output a JSON object conforming exactly to the provided schema.
+```
+
+### Conversation close detection
+
+The conversational agent signals close by including a structured marker in its final response metadata (not visible to the person). The server detects this marker and triggers the brief agent pipeline. The specific mechanism depends on the framework — this can be a tool call, a stop reason, or a metadata field in the response.
 
 ---
 
 ## Implementation Notes
 
-### Model Routing
+### Model
 
-Harbor uses LiteLLM as the model gateway. The prompt architecture is model-agnostic — it should work across any instruction-following model available through the LiteLLM endpoint. Initial development should target the strongest available model for conversation quality, with the option to route simpler interactions (clear Level 1 matches) to faster/cheaper models once routing confidence can be assessed early.
-
-### Structured Output
-
-The brief is generated via a separate API call with structured output / JSON mode after the conversation concludes — not as part of the conversational response. This keeps the conversation natural and the brief reliable.
-
-The conversation transcript is assembled server-side from the message history, not generated by the model.
+Primary model: `bedrock/claude-opus-4-6-v1` via LiteLLM. The prompt architecture is model-agnostic by design — LiteLLM normalizes the interface — but initial development and testing targets Opus for conversation quality and instruction adherence. The brief agent can run on the same model or a faster one once brief quality is validated.
 
 ### Token Efficiency
 
-Layer 4 (knowledge base) is the largest variable. If the TritonAI resource map grows beyond what fits comfortably in context, implement retrieval: embed the resource map, retrieve the top-k relevant entries based on the conversation so far, and inject only those. Layers 1–3 should remain fully in context at all times.
+Layer 4 (knowledge base) is the largest variable. The current TritonAI knowledge map (v1.0, ~700 lines / ~5k tokens) fits comfortably in context alongside Layers 1–3. If the map grows significantly, implement retrieval: embed the resource entries, retrieve the top-k relevant entries based on the conversation so far, and inject only those. Layers 1–3 should remain fully in context at all times.
 
 ### Frontend
 
-Vercel-hosted. The conversational interface follows the Seed style guide: type-driven, achromatic working palette, semantic color only for status. The chat interface is minimal — no avatars, no typing indicators that feel performative. Messages appear; they don't arrive.
+Vercel-hosted Next.js application. The conversational interface follows the Seed style guide: type-driven, achromatic working palette, semantic color only for status. The chat interface is minimal — no avatars, no typing indicators that feel performative. Messages appear; they don't arrive.
 
-The brief generation happens server-side. The person never sees the structured output. They see a plain-language closing message that tells them what happens next.
+The brief agent runs server-side. The person never sees the structured output. They see a plain-language closing message that tells them what happens next.
+
+### API Layer
+
+A thin API route handles the conversation loop and brief generation:
+
+```
+POST /api/chat
+  - Receives: user message + session message history
+  - Assembles: system prompt (Layers 1-4) + message history
+  - Calls: LiteLLM (bedrock/claude-opus-4-6-v1)
+  - Returns: assistant response + conversation metadata
+  - On close signal: triggers brief agent pipeline
+
+POST /api/brief (internal, not user-facing)
+  - Receives: conversation transcript + submitter context
+  - Calls: LiteLLM with brief agent prompt + schema
+  - Returns: structured JSON brief
+  - Writes: brief to pipeline backend (currently ClickUp API)
+```
+
+### Pipeline Backend
+
+The brief schema is backend-agnostic. ClickUp is the current target. The write step is isolated behind a simple adapter interface so the backend can change without touching the brief agent, the conversation logic, or the schema. The adapter translates the brief JSON into whatever the backend expects (ClickUp custom fields, API payloads, etc.).
 
 ### Conversation State
 
