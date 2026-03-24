@@ -10,25 +10,36 @@
 
 @theme {
   /* --- Type scale --- */
-  --font-sans: "Inter", "Helvetica Neue", "Arial", sans-serif;
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --font-serif: "Georgia", "Times New Roman", serif;
 
-  /* --- Colors: achromatic palette --- */
-  --color-white: #ffffff;
-  --color-gray-50: #fafafa;
-  --color-gray-100: #f5f5f5;
-  --color-gray-200: #e5e5e5;
-  --color-gray-300: #d4d4d4;
-  --color-gray-400: #a3a3a3;
-  --color-gray-500: #737373;
-  --color-gray-600: #525252;
-  --color-gray-700: #404040;
-  --color-gray-800: #262626;
-  --color-gray-900: #171717;
-  --color-black: #0a0a0a;
+  /* --- Font sizes: four active sizes + label --- */
+  --font-size-display: 1.625rem;
+  --font-size-heading: 1.0625rem;
+  --font-size-body: 0.9375rem;
+  --font-size-small: 0.8125rem;
+  --font-size-label: 0.6875rem;
 
-  /* --- Spacing: 4px base unit --- */
-  --spacing-unit: 4px;
+  /* --- Colors: achromatic palette (Seed) --- */
+  --color-white: #ffffff;
+  --color-gray-50: #f5f5f5;
+  --color-gray-100: #eeeeee;
+  --color-gray-200: #dddddd;
+  --color-gray-300: #bbbbbb;
+  --color-gray-400: #999999;
+  --color-gray-500: #777777;
+  --color-gray-700: #444444;
+  --color-gray-900: #1a1a1a;
+  --color-black: #111111;
+
+  /* --- Semantic colors --- */
+  --color-accent: #2a7c8a;
+  --color-accent-muted: #d6eaed;
+  --color-error: #c23b22;
+  --color-warning: #b8860b;
+
+  /* --- Layout --- */
+  --width-page: 800px;
 }
 
 /* --- Base resets --- */
@@ -47,6 +58,7 @@ html {
 
 body {
   font-family: var(--font-sans);
+  font-size: 0.9375rem;
   color: var(--color-black);
   background: var(--color-white);
   line-height: 1.6;
@@ -54,18 +66,18 @@ body {
 
 /* --- Typographic system --- */
 
-/* Display: poster-scale, the visual anchor of any view */
+/* Display: confident, tight-tracked heading */
 .display {
-  font-size: 3.75rem;
+  font-size: 1.625rem;
   font-weight: 700;
-  letter-spacing: -0.035em;
-  line-height: 1.0;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
 }
 
 @media (max-width: 640px) {
   .display {
-    font-size: 2.5rem;
-    line-height: 1.05;
+    font-size: 1.375rem;
+    line-height: 1.2;
   }
 }
 
@@ -80,9 +92,15 @@ body {
 
 /* --- Structural patterns --- */
 
+/* 2px black bar at the top of the viewport */
+.top-rule {
+  height: 2px;
+  background: var(--color-black);
+}
+
 /* Left-edge accent border: signaling priority/category on cards and responses */
 .accent-left {
-  border-left: 2px solid var(--color-black);
+  border-left: 2px solid var(--color-accent);
   padding-left: 16px;
 }
 

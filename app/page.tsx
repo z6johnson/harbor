@@ -117,11 +117,14 @@ export default function Home() {
 
   return (
     <div className="flex flex-col min-h-screen">
+      {/* Top rule — 2px black bar */}
+      <div className="top-rule" />
+
       {/* Header — full-width bar, content in the centered column */}
-      <header className="border-b border-gray-200 shrink-0">
-        <div className="max-w-2xl mx-auto px-6 h-14 flex items-center justify-between">
+      <header className="border-b border-gray-200 shrink-0 py-6">
+        <div className="max-w-page mx-auto px-6 flex items-baseline justify-between">
           <div className="flex items-baseline gap-3">
-            <span className="text-[15px] font-bold tracking-tight">harbor</span>
+            <span className="text-display font-bold tracking-tight">harbor</span>
             <span className="label hidden sm:inline">AI SOLUTION INTAKE</span>
           </div>
           <span className="label">UC SAN DIEGO</span>
@@ -129,7 +132,7 @@ export default function Home() {
       </header>
 
       {/* Main — single centered column for all states */}
-      <main className="flex-1 flex flex-col max-w-2xl w-full mx-auto px-6">
+      <main className="flex-1 flex flex-col max-w-page w-full mx-auto px-6">
         {!hasMessages ? (
           /* Empty state — vertically centered, left-aligned copy */
           <div className="flex-1 flex flex-col justify-center pb-24">
@@ -137,7 +140,7 @@ export default function Home() {
               Tell us what<br />you&apos;re working on.
             </h2>
 
-            <p className="text-[15px] text-gray-500 leading-relaxed max-w-md mb-10">
+            <p className="text-body text-gray-500 leading-relaxed max-w-lg mb-10">
               Describe a problem or an idea. We&apos;ll find the right
               path forward together.
             </p>
@@ -151,13 +154,13 @@ export default function Home() {
                 onKeyDown={handleKeyDown}
                 placeholder="What's on your mind?"
                 rows={1}
-                className="w-full resize-none rounded-xl border border-gray-200 bg-gray-50 px-5 py-4 pr-14 text-[15px] leading-relaxed placeholder:text-gray-400 focus:outline-none focus:border-gray-400 focus:bg-white transition-subtle"
+                className="w-full resize-none border border-gray-200 bg-white px-4 py-3 pr-14 text-body leading-relaxed placeholder:text-gray-400 focus:outline-none focus:border-gray-700 transition-subtle"
                 autoFocus
               />
               <button
                 onClick={() => sendMessage(input)}
                 disabled={!input.trim() || isLoading}
-                className="absolute right-3 top-1/2 -translate-y-1/2 bg-black text-white rounded-lg p-2.5 disabled:bg-gray-200 disabled:cursor-not-allowed hover:bg-gray-800 transition-subtle"
+                className="absolute right-3 top-1/2 -translate-y-1/2 bg-black text-white p-2.5 disabled:bg-gray-200 disabled:cursor-not-allowed hover:bg-gray-700 transition-subtle"
                 aria-label="Send"
               >
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -172,7 +175,7 @@ export default function Home() {
                 <button
                   key={hint}
                   onClick={() => sendMessage(hint)}
-                  className="text-[13px] text-gray-500 border border-gray-200 rounded-full px-4 py-2 hover:border-gray-400 hover:text-black transition-subtle"
+                  className="text-small text-gray-500 border border-gray-200 px-3 py-1 hover:border-gray-400 hover:text-black transition-subtle"
                 >
                   {hint}
                 </button>
@@ -182,17 +185,17 @@ export default function Home() {
         ) : (
           /* Conversation view — same column, messages scroll, input stays */
           <>
-            <div className="flex-1 overflow-y-auto py-10">
+            <div className="flex-1 overflow-y-auto py-8">
               {messages.map((msg, i) => (
-                <div key={i} className={i > 0 ? "mt-10" : ""}>
+                <div key={i} className={i > 0 ? "mt-8" : ""}>
                   <p className="label mb-3">
                     {msg.role === "user" ? "YOU" : "HARBOR"}
                   </p>
                   <div
-                    className={`text-[15px] leading-[1.75] whitespace-pre-wrap ${
+                    className={`text-body leading-[1.75] whitespace-pre-wrap ${
                       msg.role === "assistant"
                         ? "accent-left text-black"
-                        : "text-gray-600"
+                        : "text-gray-700"
                     }`}
                   >
                     {msg.content}
@@ -218,13 +221,13 @@ export default function Home() {
                   onKeyDown={handleKeyDown}
                   placeholder="Continue the conversation..."
                   rows={1}
-                  className="w-full resize-none rounded-xl border border-gray-200 bg-gray-50 px-5 py-4 pr-14 text-[15px] leading-relaxed placeholder:text-gray-400 focus:outline-none focus:border-gray-400 focus:bg-white transition-subtle"
+                  className="w-full resize-none border border-gray-200 bg-white px-4 py-3 pr-14 text-body leading-relaxed placeholder:text-gray-400 focus:outline-none focus:border-gray-700 transition-subtle"
                   autoFocus
                 />
                 <button
                   onClick={() => sendMessage(input)}
                   disabled={!input.trim() || isLoading}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 bg-black text-white rounded-lg p-2.5 disabled:bg-gray-200 disabled:cursor-not-allowed hover:bg-gray-800 transition-subtle"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 bg-black text-white p-2.5 disabled:bg-gray-200 disabled:cursor-not-allowed hover:bg-gray-700 transition-subtle"
                   aria-label="Send"
                 >
                   <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -239,7 +242,7 @@ export default function Home() {
 
       {/* Footer — empty state only */}
       {!hasMessages && (
-        <footer className="h-12 flex items-center justify-center shrink-0">
+        <footer className="border-t border-gray-200 py-2 flex items-center justify-center shrink-0">
           <p className="label text-gray-400">
             UC San Diego · Office of Strategic Initiatives
           </p>
