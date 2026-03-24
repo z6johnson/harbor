@@ -54,12 +54,19 @@ body {
 
 /* --- Typographic system --- */
 
-/* Display: confident, tight-tracked */
+/* Display: poster-scale, the visual anchor of any view */
 .display {
-  font-size: 2rem;
+  font-size: 3.75rem;
   font-weight: 700;
-  letter-spacing: -0.025em;
-  line-height: 1.1;
+  letter-spacing: -0.035em;
+  line-height: 1.0;
+}
+
+@media (max-width: 640px) {
+  .display {
+    font-size: 2.5rem;
+    line-height: 1.05;
+  }
 }
 
 /* Labels and metadata: small, semibold, uppercase, wide-tracked */
@@ -69,6 +76,14 @@ body {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--color-gray-500);
+}
+
+/* --- Structural patterns --- */
+
+/* Left-edge accent border: signaling priority/category on cards and responses */
+.accent-left {
+  border-left: 2px solid var(--color-black);
+  padding-left: 16px;
 }
 
 /* --- Scrollbar --- */
@@ -100,10 +115,21 @@ body {
   color: var(--color-black);
 }
 
-/* --- Transitions: confirmation, not performance --- */
+/* --- Transitions: confirmation, not performance (120-200ms) --- */
 
 .transition-subtle {
-  transition-property: color, border-color, opacity;
+  transition-property: color, background-color, border-color, opacity;
   transition-duration: 150ms;
   transition-timing-function: ease;
+}
+
+/* --- Streaming cursor --- */
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.animate-caret {
+  animation: blink 800ms step-end infinite;
 }
