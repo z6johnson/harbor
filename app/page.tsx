@@ -8,10 +8,12 @@ type Message = {
 };
 
 const STARTER_HINTS = [
-  "My team answers thousands of inquiries a year and we can't keep up.",
-  "I want to use AI in my course but I'm not sure where to start.",
-  "We're looking to add a chatbot to our department website.",
-  "Our grant review process takes too long and we need to streamline it.",
+  "Automate repetitive inquiries",
+  "AI in my course",
+  "Department chatbot",
+  "Streamline grant reviews",
+  "Research data pipeline",
+  "Student advising assistant",
 ];
 
 export default function Home() {
@@ -115,33 +117,31 @@ export default function Home() {
 
   return (
     <div className="flex flex-col min-h-screen">
-      {/* Header — architectural datum line */}
+      {/* Header */}
       <header className="h-14 px-6 sm:px-12 flex items-center justify-between border-b border-gray-200 shrink-0">
         <div className="flex items-baseline gap-3">
           <span className="text-[15px] font-bold tracking-tight">harbor</span>
-          <span className="label hidden sm:inline">AI SOLUTION INTAKE</span>
+          <span className="label hidden sm:inline">AI Solution Intake</span>
         </div>
-        <span className="label">UC SAN DIEGO</span>
+        <span className="label">UC San Diego</span>
       </header>
 
       {/* Main area */}
-      <main className="flex-1 flex flex-col w-full max-w-5xl px-6 sm:px-12">
+      <main className="flex-1 flex flex-col w-full max-w-3xl mx-auto px-6 sm:px-12">
         {!hasMessages ? (
-          /* Empty state — the poster */
-          <div className="flex-1 flex flex-col justify-center pb-32">
-            <div className="max-w-2xl">
-              {/* Display headline — THE visual anchor */}
-              <h2 className="display mb-6">
-                Tell us what<br />you&apos;re working on.
+          /* Empty state */
+          <div className="flex-1 flex flex-col items-center justify-center pb-24">
+            <div className="w-full max-w-xl text-center">
+              <h2 className="display mb-4">
+                What are you<br />working on?
               </h2>
 
-              <p className="text-[15px] text-gray-500 leading-relaxed max-w-sm mb-16">
-                Describe a problem or an idea. We&apos;ll find the right
-                path forward together.
+              <p className="text-[15px] text-gray-500 leading-relaxed mb-10">
+                Describe a problem or an idea — we&apos;ll find the right path forward together.
               </p>
 
               {/* Input zone */}
-              <div className="mb-16">
+              <div className="mb-8 relative">
                 <textarea
                   ref={textareaRef}
                   value={input}
@@ -149,34 +149,32 @@ export default function Home() {
                   onKeyDown={handleKeyDown}
                   placeholder="What's on your mind?"
                   rows={1}
-                  className="w-full resize-none border-b-2 border-gray-300 bg-transparent px-0 py-3 text-[15px] leading-relaxed placeholder:text-gray-400 focus:outline-none focus:border-black transition-subtle"
+                  className="w-full resize-none rounded-xl border border-gray-200 bg-gray-50 px-5 py-4 pr-16 text-[15px] leading-relaxed placeholder:text-gray-400 focus:outline-none focus:border-gray-400 focus:bg-white transition-subtle"
                   autoFocus
                 />
-                <div className="flex justify-end mt-4">
-                  <button
-                    onClick={() => sendMessage(input)}
-                    disabled={!input.trim() || isLoading}
-                    className="bg-black text-white text-[13px] font-semibold tracking-wide uppercase px-6 py-2.5 disabled:bg-gray-300 disabled:cursor-not-allowed hover:bg-gray-800 transition-subtle"
-                  >
-                    Send
-                  </button>
-                </div>
+                <button
+                  onClick={() => sendMessage(input)}
+                  disabled={!input.trim() || isLoading}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 bg-black text-white rounded-lg p-2.5 disabled:bg-gray-200 disabled:cursor-not-allowed hover:bg-gray-800 transition-subtle"
+                  aria-label="Send"
+                >
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3 13V9L7 8L3 7V3L14 8L3 13Z" fill="currentColor"/>
+                  </svg>
+                </button>
               </div>
 
-              {/* Starter hints — tertiary actions */}
-              <div>
-                <p className="label mb-4">Or start with one of these</p>
-                <div className="flex flex-col gap-2">
-                  {STARTER_HINTS.map((hint) => (
-                    <button
-                      key={hint}
-                      onClick={() => sendMessage(hint)}
-                      className="text-left text-[13px] text-gray-400 py-1.5 hover:text-black transition-subtle"
-                    >
-                      {hint}
-                    </button>
-                  ))}
-                </div>
+              {/* Starter hint chips */}
+              <div className="flex flex-wrap justify-center gap-2">
+                {STARTER_HINTS.map((hint) => (
+                  <button
+                    key={hint}
+                    onClick={() => sendMessage(hint)}
+                    className="text-[13px] text-gray-500 border border-gray-200 rounded-full px-4 py-2 hover:border-gray-400 hover:text-black transition-subtle"
+                  >
+                    {hint}
+                  </button>
+                ))}
               </div>
             </div>
           </div>
@@ -184,7 +182,7 @@ export default function Home() {
           /* Conversation view */
           <>
             <div className="flex-1 overflow-y-auto">
-              <div className="max-w-2xl py-12">
+              <div className="py-12">
                 {messages.map((msg, i) => (
                   <div key={i} className={i > 0 ? "mt-10" : ""}>
                     <p className="label mb-3">
@@ -211,9 +209,9 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Input bar — architectural base */}
+            {/* Input bar */}
             <div className="border-t border-gray-200 py-5 shrink-0">
-              <div className="max-w-2xl flex gap-4 items-end">
+              <div className="flex gap-3 items-end">
                 <textarea
                   ref={textareaRef}
                   value={input}
@@ -221,15 +219,18 @@ export default function Home() {
                   onKeyDown={handleKeyDown}
                   placeholder="Continue..."
                   rows={1}
-                  className="flex-1 resize-none border-b-2 border-gray-300 bg-transparent px-0 py-3 text-[15px] leading-relaxed placeholder:text-gray-400 focus:outline-none focus:border-black transition-subtle"
+                  className="flex-1 resize-none rounded-xl border border-gray-200 bg-gray-50 px-5 py-3 text-[15px] leading-relaxed placeholder:text-gray-400 focus:outline-none focus:border-gray-400 focus:bg-white transition-subtle"
                   autoFocus
                 />
                 <button
                   onClick={() => sendMessage(input)}
                   disabled={!input.trim() || isLoading}
-                  className="bg-black text-white text-[13px] font-semibold tracking-wide uppercase px-6 py-2.5 disabled:bg-gray-300 disabled:cursor-not-allowed hover:bg-gray-800 transition-subtle shrink-0"
+                  className="bg-black text-white rounded-lg p-3 disabled:bg-gray-200 disabled:cursor-not-allowed hover:bg-gray-800 transition-subtle shrink-0"
+                  aria-label="Send"
                 >
-                  Send
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3 13V9L7 8L3 7V3L14 8L3 13Z" fill="currentColor"/>
+                  </svg>
                 </button>
               </div>
             </div>
@@ -237,9 +238,9 @@ export default function Home() {
         )}
       </main>
 
-      {/* Footer — architectural base, only in empty state */}
+      {/* Footer */}
       {!hasMessages && (
-        <footer className="h-12 px-6 sm:px-12 flex items-center border-t border-gray-100 shrink-0">
+        <footer className="h-12 px-6 sm:px-12 flex items-center justify-center shrink-0">
           <p className="label text-gray-400">
             UC San Diego · Office of Strategic Initiatives
           </p>
